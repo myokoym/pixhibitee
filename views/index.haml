@@ -1,0 +1,31 @@
+-# -*- coding: utf-8 -*-
+!!!
+%html
+  %head
+    %meta{"http-equiv" => "content-type", :content => "text/html; charset=utf-8"}
+    %meta{"http-equiv" => "content-style-type", :content => "text/css"}
+    %meta{"http-equiv" => "content-script-type", :content => "text/javascript"}
+    %link(rel="stylesheet" href="flexslider.css" type="text/css")
+    %script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js")
+    %script(src="jquery.flexslider.js")
+    %title Suberuim
+  %body
+    %h1 Suberuim
+
+    Powered by
+    %a{:href => "http://www.ruby-lang.org/ja/"} Ruby
+    ,
+    %a{:href => "http://www.sinatrarb.com/intro-ja.html"} Sinatra
+    and
+    %a{:href => "https://github.com/woothemes/FlexSlider"} FlexSlider
+
+    %div.flexslider
+      %ul.slides
+        - @paths.each do |path|
+          %li
+            %img{src: path}
+
+  :javascript
+    $(window).load(function() {
+      $('.flexslider').flexslider();
+    });

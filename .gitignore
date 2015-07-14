@@ -1,0 +1,3 @@
+/public/*
+!/public/flexslider.css
+!/public/jquery.flexslider.js
