@@ -4,7 +4,7 @@ get "/" do
   absolute_path = File.expand_path("..", __FILE__)
   files = Dir.glob("*").map {|path| File.basename(path) }
   @paths = files.map {|file| "/@/#{file}" }
-  system("ln", "-s", absolute_path, "public/@")
+  system("ln", "-sfn", absolute_path, "public/@")
   haml :index
 end
 
@@ -18,6 +18,6 @@ get "/:path" do |virtual_path|
     files = [File.basename(absolute_path)]
     @paths = files.map {|file| "/#{virtual_path}" }
   end
-  system("ln", "-s", absolute_path, "public/#{virtual_path}")
+  system("ln", "-sfn", absolute_path, "public/#{virtual_path}")
   haml :index
 end
