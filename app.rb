@@ -1,8 +1,16 @@
 require "sinatra"
+require "mime/types"
 
 get "/" do
   absolute_path = File.expand_path("..", __FILE__)
-  files = Dir.glob("*").map {|path| File.basename(path) }
+  files = Dir.glob("*").map {|path| File.basename(path) }.select do |path|
+    mime_type = MIME::Types.type_for(path)[0]
+    if mime_type
+      mime_type.media_type == "image"
+    else
+      false
+    end
+  end
   @paths = files.map {|file| "/@/#{file}" }
   system("ln", "-sfn", absolute_path, "public/@")
   haml :index
@@ -12,7 +20,14 @@ get "/:path" do |virtual_path|
   real_path = virtual_path.gsub("@", "/")
   absolute_path = File.expand_path(real_path, "~")
   if File.directory?(absolute_path)
-    files = Dir.glob("#{absolute_path}/*").map {|path| File.basename(path) }
+    files = Dir.glob("#{absolute_path}/*").map {|path| File.basename(path) }.select do |path|
+      mime_type = MIME::Types.type_for(path)[0]
+      if mime_type
+        mime_type.media_type == "image"
+      else
+        false
+      end
+    end
     @paths = files.map {|file| "/#{virtual_path}/#{file}" }
   else
     files = [File.basename(absolute_path)]
