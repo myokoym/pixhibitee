@@ -1,7 +1,10 @@
 require "sinatra"
 
 get "/" do
-  @paths = []
+  absolute_path = File.expand_path("..", __FILE__)
+  files = Dir.glob("*").map {|path| File.basename(path) }
+  @paths = files.map {|file| "/@/#{file}" }
+  system("ln", "-s", absolute_path, "public/@")
   haml :index
 end
 
