@@ -23,8 +23,9 @@
       %ul.slides
         - @paths.each do |path|
           %li
-            %img{src: path}
-            %p.flex-caption= path
+            %a{href: path}
+              %img{src: path}
+              %p.flex-caption= path
 
   %a{:href => "https://github.com/myokoym/suberuim"}
     %img{:style => "position: absolute; top: 0; right: 0; border: 0;",
