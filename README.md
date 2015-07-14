@@ -14,7 +14,7 @@ An image viewer as a web application for local files.
 ### Open a browser
 
 ```
-% firefox http://host:port/path/to/image/or/directory
+% firefox http://host:port/path@to@image@or@directory
 ```
 
 ## License
