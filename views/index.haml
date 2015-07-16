@@ -10,15 +10,6 @@
 
     %title Suberuim
   %body
-    %h1 Suberuim
-
-    Powered by
-    %a{:href => "http://www.ruby-lang.org/"} Ruby
-    ,
-    %a{:href => "http://www.sinatrarb.com/intro.html"} Sinatra
-    and
-    %a{:href => "https://github.com/kenwheeler/slick"} slick
-
     %div.slider-nav
       - @paths.each do |path|
         %div
@@ -29,6 +20,18 @@
         %div
           %a{href: path}
             %img{src: path}
+
+    %div.slider-nav
+      - @paths.each do |path|
+        %div
+          %img{src: path, width: 120, height: 80}
+
+  Powered by
+  %a{:href => "http://www.ruby-lang.org/"} Ruby
+  ,
+  %a{:href => "http://www.sinatrarb.com/intro.html"} Sinatra
+  and
+  %a{:href => "https://github.com/kenwheeler/slick"} slick
 
   %a{:href => "https://github.com/myokoym/suberuim"}
     %img{:style => "position: absolute; top: 0; right: 0; border: 0;",
