@@ -56,8 +56,8 @@
           responsives[i] = {
             breakpoint: (140 * slides),
             settings: {
-              slidesToShow: slides,
-              slidesToScroll: slides
+              slidesPerRow: slides,
+              slidesToShow: slides
             }
           };
         }
@@ -68,8 +68,9 @@
           dots: true,
           centerMode: false,
           focusOnSelect: true,
+          slidesPerRow: 8,
           slidesToShow: 8,
-          slidesToScroll: 8,
+          slidesToScroll: 1,
           responsive: responsives
         });
       });
