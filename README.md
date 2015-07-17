@@ -1,4 +1,4 @@
-# Pixhibitee ![Gem Version](https://badge.fury.io/rb/pixhibitee.svg)](http://badge.fury.io/rb/pixhibitee)
+# Pixhibitee [![Gem Version](https://badge.fury.io/rb/pixhibitee.svg)](http://badge.fury.io/rb/pixhibitee)
 
 An image viewer as a web application for local files.
 
