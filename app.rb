@@ -19,9 +19,9 @@ end
 helpers do
   def collect_image_files(absolute_path, virtual_path)
     if File.directory?(absolute_path)
-      files = Dir.glob("#{absolute_path}/*").map {|path| File.basename(path) }.select do |path|
+      files = Dir.glob("#{absolute_path}/*").select {|path|
         displayable?(path)
-      end
+      }.map {|path| File.basename(path) }
       files.map {|file| "/#{virtual_path}/#{file}" }
     else
       files = [File.basename(absolute_path)]
