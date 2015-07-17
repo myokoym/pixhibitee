@@ -4,6 +4,10 @@ An image viewer as a web application for local files.
 
 You can open your pictures exhibition easily on web.
 
+## Demo
+
+http://myokoym.net:4567/
+
 ## Installation
 
     $ gem install pixhibitee
