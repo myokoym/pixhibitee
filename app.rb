@@ -30,11 +30,11 @@ helpers do
   end
 
   def displayable?(path)
-        mime_type = MIME::Types.type_for(path)[0]
-        if mime_type
-          mime_type.media_type == "image"
-        else
-          false
-        end
+    mime_type = MIME::Types.type_for(path)[0]
+    if mime_type
+      mime_type.media_type == "image"
+    else
+      false
+    end
   end
 end
