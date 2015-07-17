@@ -2,6 +2,8 @@
 
 An image viewer as a web application for local files.
 
+You can open your pictures exhibition easily on web.
+
 ## Usage
 
 ### Setup
