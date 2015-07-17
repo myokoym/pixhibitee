@@ -38,12 +38,12 @@ module Pixhibitee
 
       def collect_files(base_path)
         expanded_path = File.expand_path(base_path)
-          paths = Dir.glob("#{expanded_path}/*").select do |path|
-            yield(path)
-          end
-          paths.map do |path|
-            format_link(path, expanded_path, base_path)
-          end
+        paths = Dir.glob("#{expanded_path}/*").select do |path|
+          yield(path)
+        end
+        paths.map do |path|
+          format_link(path, expanded_path, base_path)
+        end
       end
 
       def displayable?(path)
