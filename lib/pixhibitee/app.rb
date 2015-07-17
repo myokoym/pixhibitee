@@ -39,7 +39,6 @@ module Pixhibitee
       def displayable?(path)
         mime_type = MIME::Types.type_for(path)[0]
         return false unless mime_type
-        return false if File.size(path) > 1_000_000
         mime_type.media_type == "image"
       end
 

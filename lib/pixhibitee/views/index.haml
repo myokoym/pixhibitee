@@ -13,12 +13,12 @@
     %div.slider-nav
       - @paths.each do |path|
         %div
-          %img{src: path, width: 120, height: 80}
+          %img{"data-lazy" => path, width: 120, height: 80}
 
     %div.slider-for{align: "center"}
       - @paths.each do |path|
         %div
-          %img{src: path}
+          %img{"data-lazy" => path}
 
     %p
       - @sub_directories.each do |dir|
