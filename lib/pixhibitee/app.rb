@@ -21,9 +21,7 @@ module Pixhibitee
             displayable?(path)
           }
           paths.map do |path|
-            src = "#{path.sub(expanded_path, base_path)}"
-            src = "/#{src}" unless src.start_with?("/")
-            src
+            format_link(path, expanded_path, base_path)
           end
         else
           paths = [base_path]
@@ -46,6 +44,12 @@ module Pixhibitee
         return false unless mime_type
         return false if File.size(path) > 1_000_000
         mime_type.media_type == "image"
+      end
+
+      def format_link(path, expanded_path, base_path)
+            src = "#{path.sub(expanded_path, base_path)}"
+            src = "/#{src}" unless src.start_with?("/")
+            src
       end
     end
   end
