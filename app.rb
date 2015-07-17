@@ -20,17 +20,21 @@ helpers do
   def collect_image_files(absolute_path, virtual_path)
     if File.directory?(absolute_path)
       files = Dir.glob("#{absolute_path}/*").map {|path| File.basename(path) }.select do |path|
-        mime_type = MIME::Types.type_for(path)[0]
-        if mime_type
-          mime_type.media_type == "image"
-        else
-          false
-        end
+        displayable?(path)
       end
       files.map {|file| "/#{virtual_path}/#{file}" }
     else
       files = [File.basename(absolute_path)]
       files.map {|file| "/#{virtual_path}" }
     end
+  end
+
+  def displayable?(path)
+        mime_type = MIME::Types.type_for(path)[0]
+        if mime_type
+          mime_type.media_type == "image"
+        else
+          false
+        end
   end
 end
