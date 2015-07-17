@@ -15,15 +15,15 @@ module Pixhibitee
 
     helpers do
       def collect_image_files(base_path)
-          collect_files(base_path) do |path|
-            displayable?(path)
-          end
+        collect_files(base_path) do |path|
+          displayable?(path)
+        end
       end
 
       def collect_sub_directories(base_path)
-          collect_files(base_path) do |path|
-            File.directory?(path)
-          end
+        collect_files(base_path) do |path|
+          File.directory?(path)
+        end
       end
 
       def collect_files(base_path)
