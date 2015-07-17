@@ -4,20 +4,23 @@ An image viewer as a web application for local files.
 
 You can open your pictures exhibition easily on web.
 
+## Installation
+
+    $ gem install pixhibitee
+
 ## Usage
 
-### Setup
+    $ cd /path/to/directory
+    $ pixhibitee [OPTIONS]
 
-```
-% bundle install
-% ruby app.rb
-```
+### OPTIONS
 
-### Open a browser
-
-```
-% firefox http://host:port/path/to/image/or/directory
-```
+* `--silent`
+  * Don't open in browser
+* `--public`
+  * Publish to network
+* `--port=PORT`
+  * Set port number
 
 ## License
 
