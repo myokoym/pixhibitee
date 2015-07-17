@@ -20,10 +20,9 @@
         %div
           %img{src: path}
 
-    %div.slider-nav
-      - @paths.each do |path|
-        %div
-          %img{src: path, width: 120, height: 80}
+    %p
+      - @sub_directories.each do |dir|
+        %a{href: dir}= dir
 
   Powered by
   %a{href: "http://www.ruby-lang.org/"} Ruby

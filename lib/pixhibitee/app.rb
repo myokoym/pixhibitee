@@ -9,6 +9,7 @@ module Pixhibitee
     get "/*" do
       base_path = params["splat"][0]
       @paths = collect_image_files(base_path)
+      @sub_directories = collect_sub_directories(base_path)
       haml :index
     end
 
@@ -26,6 +27,17 @@ module Pixhibitee
           end
         else
           paths = [base_path]
+        end
+      end
+
+      def collect_sub_directories(base_path)
+        expanded_path = File.expand_path(base_path)
+        if File.directory?(expanded_path)
+          Dir.glob("#{expanded_path}/*").select {|path|
+            File.directory?(path)
+          }.map {|path| "#{path.sub(expanded_path, base_path)}" }
+        else
+          []
         end
       end
 
