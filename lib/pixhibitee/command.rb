@@ -29,6 +29,7 @@ module Pixhibitee
       web_server_thread.join
     end
 
+    private
     def port
       options[:port] || "4567"
     end
