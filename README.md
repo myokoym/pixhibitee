@@ -1,4 +1,4 @@
-# Suberuim
+# Pixhibitee
 
 An image viewer as a web application for local files.
 
