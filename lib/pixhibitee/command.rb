@@ -15,10 +15,34 @@ module Pixhibitee
 
     desc "start", "Start web server."
     option :silent, :type => :boolean, :desc => "Don't open in browser"
+    option :public, :type => :boolean, :desc => "Publish to network"
+    option :port, :type => :string, :desc => "Set port number"
     def start
-      web_server_thread = Thread.new { Pixhibitee::App.run! }
-      Launchy.open("http://localhost:4567") unless options[:silent]
+      web_server_thread = Thread.new do
+        if options[:public]
+          start_public_server
+        else
+          start_private_server
+        end
+      end
+      Launchy.open("http://localhost:#{port}") unless options[:silent]
       web_server_thread.join
+    end
+
+    def port
+      options[:port] || "4567"
+    end
+
+    def start_private_server
+      Pixhibitee::App.run!
+    end
+
+    def start_public_server
+      Rack::Server.start({
+        :config => File.join(File.dirname(__FILE__), "../../config.ru"),
+        :Host   => "0.0.0.0",
+        :Port   => port,
+      })
     end
   end
 end
