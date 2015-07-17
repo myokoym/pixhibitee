@@ -17,9 +17,9 @@ module Pixhibitee
       def collect_image_files(base_path)
         expanded_path = File.expand_path(base_path)
         if File.directory?(expanded_path)
-          paths = Dir.glob("#{expanded_path}/*").select {|path|
+          paths = Dir.glob("#{expanded_path}/*").select do |path|
             displayable?(path)
-          }
+          end
           paths.map do |path|
             format_link(path, expanded_path, base_path)
           end
@@ -31,9 +31,9 @@ module Pixhibitee
       def collect_sub_directories(base_path)
         expanded_path = File.expand_path(base_path)
         if File.directory?(expanded_path)
-          paths = Dir.glob("#{expanded_path}/*").select {|path|
+          paths = Dir.glob("#{expanded_path}/*").select do |path|
             File.directory?(path)
-          }
+          end
           paths.map do |path|
             format_link(path, expanded_path, base_path)
           end
