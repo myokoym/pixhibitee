@@ -15,25 +15,15 @@ module Pixhibitee
 
     helpers do
       def collect_image_files(base_path)
-        expanded_path = File.expand_path(base_path)
-        if File.directory?(expanded_path)
           collect_files(base_path) do |path|
             displayable?(path)
           end
-        else
-          paths = [base_path]
-        end
       end
 
       def collect_sub_directories(base_path)
-        expanded_path = File.expand_path(base_path)
-        if File.directory?(expanded_path)
           collect_files(base_path) do |path|
             File.directory?(path)
           end
-        else
-          []
-        end
       end
 
       def collect_files(base_path)
