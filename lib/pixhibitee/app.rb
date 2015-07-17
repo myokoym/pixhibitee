@@ -47,9 +47,9 @@ module Pixhibitee
       end
 
       def format_link(path, expanded_path, base_path)
-            src = "#{path.sub(expanded_path, base_path)}"
-            src = "/#{src}" unless src.start_with?("/")
-            src
+        src = "#{path.sub(expanded_path, base_path)}"
+        src = "/#{src}" unless src.start_with?("/")
+        src
       end
     end
   end
