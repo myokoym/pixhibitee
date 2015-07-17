@@ -15,7 +15,7 @@
         %div
           %img{src: path, width: 120, height: 80}
 
-    %div.slider-for
+    %div.slider-for{align: "center"}
       - @paths.each do |path|
         %div
           %img{src: path}
@@ -65,7 +65,7 @@
           asNavFor: '.slider-for',
           arrows: true,
           dots: true,
-          centerMode: false,
+          centerMode: true,
           focusOnSelect: true,
           slidesPerRow: 8,
           slidesToShow: 8,
