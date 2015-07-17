@@ -1,5 +1,5 @@
 require "sinatra/base"
-require "haml"
+require "tilt/haml"
 require "mime/types"
 
 module Pixhibitee
