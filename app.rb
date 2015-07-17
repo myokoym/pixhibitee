@@ -1,31 +1,28 @@
 require "sinatra"
 require "mime/types"
 
-get "/" do
-  absolute_path = File.expand_path("..", __FILE__)
-  @paths = collect_image_files(absolute_path, "@")
-  system("ln", "-sfn", absolute_path, "public/@")
-  haml :index
-end
+set :public_folder, Proc.new { Dir.pwd }
 
-get "/:path" do |virtual_path|
-  real_path = virtual_path.gsub("@", "/")
-  absolute_path = File.expand_path(real_path, "~")
-  @paths = collect_image_files(absolute_path, virtual_path)
-  system("ln", "-sfn", absolute_path, "public/#{virtual_path}")
+get "/*" do
+  base_path = params["splat"][0]
+  @paths = collect_image_files(base_path)
   haml :index
 end
 
 helpers do
-  def collect_image_files(absolute_path, virtual_path)
-    if File.directory?(absolute_path)
-      paths = Dir.glob("#{absolute_path}/*").select {|path|
+  def collect_image_files(base_path)
+    expanded_path = File.expand_path(base_path)
+    if File.directory?(expanded_path)
+      paths = Dir.glob("#{expanded_path}/*").select {|path|
         displayable?(path)
-      }.map {|path| File.basename(path) }
-      paths.map {|file| "/#{virtual_path}/#{file}" }
+      }
+      paths.map do |path|
+        src = "#{path.sub(expanded_path, base_path)}"
+        src = "/#{src}" unless src.start_with?("/")
+        src
+      end
     else
-      paths = [File.basename(absolute_path)]
-      paths.map {|file| "/#{virtual_path}" }
+      paths = [base_path]
     end
   end
 

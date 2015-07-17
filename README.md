@@ -16,7 +16,7 @@ You can open your pictures exhibition easily on web.
 ### Open a browser
 
 ```
-% firefox http://host:port/path@to@image@or@directory
+% firefox http://host:port/path/to/image/or/directory
 ```
 
 ## License
