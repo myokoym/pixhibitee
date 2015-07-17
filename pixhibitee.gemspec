@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency("haml")
   spec.add_runtime_dependency("mime-types")
   spec.add_runtime_dependency("thor")
+  spec.add_runtime_dependency("launchy")
 
   spec.add_development_dependency("test-unit")
   spec.add_development_dependency("bundler")
